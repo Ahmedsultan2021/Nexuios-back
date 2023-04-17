@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\logoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\ReservationController;
@@ -9,7 +8,6 @@ use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-use logoutController as GlobalLogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +26,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('/login', [LoginController::class, 'loginUser']);
-// Route::post('/logout', [GlobalLogoutController::class,'logout']);
 Route::post('/register', [RegisterController::class, 'register']);
 Route::apiResource('room',RoomController::class);
 Route::apiResource('reservations',ReservationController::class);
@@ -91,3 +88,30 @@ Route::get('/reservations2/last', function (Request $request) {
         'data' => $reservations,
     ]);
 });
+
+
+
+// GET|HEAD        / ..............................................................................................................  
+// POST            _ignition/execute-solution ....... ignition.executeSolution › Spatie\LaravelIgnition › ExecuteSolutionController  
+// GET|HEAD        _ignition/health-check ................... ignition.healthCheck › Spatie\LaravelIgnition › HealthCheckController  
+// POST            _ignition/update-config ................ ignition.updateConfig › Spatie\LaravelIgnition › UpdateConfigController  
+// GET|HEAD        api/authenticated ..............................................................................................  
+// DELETE          api/deleteUser/{id} ...................................................................... UserController@delete  
+// POST            api/login ....................................................................... Auth\LoginController@loginUser  
+// POST            api/logout .....................................................................................................  
+// POST            api/register .................................................................. Auth\RegisterController@register  
+// GET|HEAD        api/reservations .............................................. reservations.index › ReservationController@index  
+// POST            api/reservations .............................................. reservations.store › ReservationController@store  
+// GET|HEAD        api/reservations/{reservation} .................................. reservations.show › ReservationController@show  
+// PUT|PATCH       api/reservations/{reservation} .............................. reservations.update › ReservationController@update  
+// DELETE          api/reservations/{reservation} ............................ reservations.destroy › ReservationController@destroy  
+// GET|HEAD        api/reservations2/last .........................................................................................  
+// GET|HEAD        api/reservations2/search .......................................................................................  
+// GET|HEAD        api/room ..................................................................... room.index › RoomController@index  
+// POST            api/room ..................................................................... room.store › RoomController@store  
+// GET|HEAD        api/room/{room} ................................................................ room.show › RoomController@show  
+// PUT|PATCH       api/room/{room} ............................................................ room.update › RoomController@update  
+// DELETE          api/room/{room} .......................................................... room.destroy › RoomController@destroy  
+// GET|HEAD        api/user .......................................................................................................  
+// GET|HEAD        api/users ................................................................................. UserController@index  
+// GET|HEAD        sanctum/csrf-cookie .......................... sanctum.csrf-cookie › Laravel\Sanctum › CsrfCookieController@show  

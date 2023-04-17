@@ -280,8 +280,5 @@ class ReservationController extends Controller
 
         return response()->json(['message' => 'Reservation deleted successfully.']);
     }
-    public function search(Request $request)
-    {
-      
-    }
+ 
 }
